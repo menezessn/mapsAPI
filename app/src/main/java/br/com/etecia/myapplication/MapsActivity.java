@@ -2,6 +2,7 @@ package br.com.etecia.myapplication;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    Intent i;
+    float lat, longi;
 
     private GoogleMap mMap;
 
@@ -23,6 +26,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        i = getIntent();
+        lat = i.getExtras().getFloat("latitude");
+        longi = i.getExtras().getFloat("longitude");
     }
 
     /**
@@ -39,9 +45,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng etec = new LatLng(-23.702726911467526, -46.68932291624189);
-        mMap.addMarker(new MarkerOptions().position(etec).title("Etec"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(etec));
+        LatLng local = new LatLng(lat, longi);
+        mMap.addMarker(new MarkerOptions().position(local).title("Coordenadas inseridas"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(local));
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
     }

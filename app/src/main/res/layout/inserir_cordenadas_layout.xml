@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="insira a latitude"
+        android:inputType="numberDecimal"
 
         />
     <TextView
@@ -38,10 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="insira a latitude"
-
+        android:inputType="numberDecimal"
         />
 
     <Button
+        android:id="@+id/btn_procurar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="procurar"
