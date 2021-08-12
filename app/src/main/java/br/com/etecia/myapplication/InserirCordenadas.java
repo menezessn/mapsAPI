@@ -25,11 +25,18 @@ public class InserirCordenadas extends AppCompatActivity {
         btnProcurar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etLat.getText().toString().isEmpty() || etLong.getText().toString().isEmpty()){
-                    Toast.makeText(InserirCordenadas.this, "Campo vazio!!!", Toast.LENGTH_SHORT).show();
+
+
+
+                if (etLat.getText().toString().isEmpty() || etLong.getText().toString().isEmpty()) {
+                    Toast.makeText(InserirCordenadas.this, "Campo vazio!!!", Toast.LENGTH_LONG).show();
+                } else if ((Double.parseDouble(etLat.getText().toString()) > 90 || Double.parseDouble(etLat.getText().toString()) < -90)) {
+                    Toast.makeText(InserirCordenadas.this, "Insira uma latitude válida", Toast.LENGTH_SHORT).show();
+                } else if (Double.parseDouble(etLong.getText().toString()) > 180 || Double.parseDouble(etLong.getText().toString()) < -180) {
+                    Toast.makeText(InserirCordenadas.this, "Insira uma longitude válida", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent i = new Intent(InserirCordenadas.this, MapsActivity.class);
-                    i.putExtra("latitude",etLat.getText().toString() );
+                    i.putExtra("latitude", etLat.getText().toString());
                     i.putExtra("longitude", etLong.getText().toString());
                     startActivity(i);
                 }

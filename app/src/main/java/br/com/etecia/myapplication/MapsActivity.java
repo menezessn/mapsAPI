@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -26,9 +27,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        i = getIntent();
-        lat = i.getExtras().getFloat("latitude");
-        longi = i.getExtras().getFloat("longitude");
+      //  i = getIntent();
+      //  lat = i.getExtras().getFloat("latitude");
+      //  longi = i.getExtras().getFloat("longitude");
     }
 
     /**
@@ -45,9 +46,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng local = new LatLng(lat, longi);
-        mMap.addMarker(new MarkerOptions().position(local).title("Coordenadas inseridas"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(local));
+        LatLng local = new LatLng(-23.9509126993502, -46.33881198704211);
+        mMap.addMarker(new MarkerOptions().position(local).title("Vila Belmiro").icon(BitmapDescriptorFactory.fromResource(R.drawable.mapa)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(local,12.75f));
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
     }
